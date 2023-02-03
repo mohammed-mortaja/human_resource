@@ -2,7 +2,7 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "field:first_name",
- "creation": "2023-01-29 19:36:37.254996",
+ "creation": "2023-02-01 13:36:31.433786",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -10,15 +10,29 @@
   "first_name",
   "middle_name",
   "last_name",
+  "full_name",
   "image",
+  "column_break_kfjny",
   "status",
+  "employee_number",
+  "date_of_birth",
+  "date_of_joining",
+  "age",
+  "mobile",
   "department",
-  "employee_education"
+  "section_break_kuekj",
+  "employee_education",
+  "count_employee_education",
+  "section_break_a9hvk",
+  "cv",
+  "cv_valuation",
+  "cv_2"
  ],
  "fields": [
   {
    "fieldname": "first_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "First Name",
    "unique": 1
   },
@@ -33,6 +47,12 @@
    "label": "Last Name"
   },
   {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name",
+   "unique": 1
+  },
+  {
    "fieldname": "image",
    "fieldtype": "Attach Image",
    "label": "Image"
@@ -44,21 +64,79 @@
    "options": "Active\nInactive\nSuspended\nLeft"
   },
   {
+   "fieldname": "employee_number",
+   "fieldtype": "Int",
+   "label": "Employee Number"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "date_of_joining",
+   "fieldtype": "Data",
+   "label": "Date of Joining"
+  },
+  {
+   "fieldname": "age",
+   "fieldtype": "Data",
+   "label": "Age",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_kfjny",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "label": "Mobile"
+  },
+  {
    "fieldname": "department",
    "fieldtype": "Link",
    "label": "Department",
    "options": "Department"
   },
   {
+   "fieldname": "section_break_kuekj",
+   "fieldtype": "Section Break"
+  },
+  {
    "fieldname": "employee_education",
    "fieldtype": "Table",
    "label": "Employee Education",
    "options": "Employee Education"
+  },
+  {
+   "fieldname": "count_employee_education",
+   "fieldtype": "Data",
+   "label": "Count Employee Education"
+  },
+  {
+   "fieldname": "section_break_a9hvk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cv",
+   "fieldtype": "Data",
+   "label": "CV"
+  },
+  {
+   "fieldname": "cv_valuation",
+   "fieldtype": "Data",
+   "label": "CV Valuation"
+  },
+  {
+   "fieldname": "cv_2",
+   "fieldtype": "Data",
+   "label": " Cv 2"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-01-29 19:37:07.809599",
+ "modified": "2023-02-03 14:20:34.594366",
  "modified_by": "Administrator",
  "module": "Human Resource",
  "name": "Employee",
