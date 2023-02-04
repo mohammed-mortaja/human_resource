@@ -24,3 +24,4 @@ class Employee(Document):
 
 		if len(self.employee_education) < 2:
 			frappe.throw("Employee must have at least two Education entries")
+			
