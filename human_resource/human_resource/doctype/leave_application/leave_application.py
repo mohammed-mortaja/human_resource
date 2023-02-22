@@ -74,3 +74,14 @@ class LeaveApplication(Document):
 		leave_allocation = frappe.get_doc("Leave Allocation", {"employee": self.employee})
 		leave_allocation.total_leaves += self.total_leaves
 		leave_allocation.save()
+@frappe.whitelist()
+def get_total_leaves(employee=None ,leave_type=None ,from_date=None ,to_date=None):
+	if employee and leave_type and from_date and to_date:
+		leave_allocated = frappe.db.sql(""" SELECT total_leaves FROM `tabLeave Allocation`
+		where employee = %s  and leave_type = %s  and from_date <= %s  and to_date >= %s  """,
+									  (employee,leave_type, from_date, to_date), as_dict=1)
+	if leave_allocated:
+		return str(leave_allocated[0].total_leaves)
+	else:
+		return 0
+
