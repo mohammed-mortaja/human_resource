@@ -4,6 +4,7 @@
 import frappe
 from frappe.model.document import Document
 from datetime import datetime, timedelta
+from frappe.utils import date_diff
 class LeaveApplication(Document):
 
 	def validate(self):
@@ -74,14 +75,25 @@ class LeaveApplication(Document):
 		leave_allocation = frappe.get_doc("Leave Allocation", {"employee": self.employee})
 		leave_allocation.total_leaves += self.total_leaves
 		leave_allocation.save()
-@frappe.whitelist()
-def get_total_leaves(employee=None ,leave_type=None ,from_date=None ,to_date=None):
-	if employee and leave_type and from_date and to_date:
-		leave_allocated = frappe.db.sql(""" SELECT total_leaves FROM `tabLeave Allocation`
-		where employee = %s  and leave_type = %s  and from_date <= %s  and to_date >= %s  """,
-									  (employee,leave_type, from_date, to_date), as_dict=1)
-	if leave_allocated:
-		return str(leave_allocated[0].total_leaves)
-	else:
-		return 0
 
+@frappe.whitelist()
+def get_total_leaves(employee, leave_type, from_date, to_date):
+    if employee and leave_type and from_date and to_date:
+        leave_allocations = frappe.db.sql(
+            """ select name from `tabLeave Allocation` where employee = %s
+        and leave_type = %s and from_date <= %s and to_date >= %s
+        """, (employee, leave_type, from_date, to_date), as_dict=1)
+        if leave_allocations:
+            allocation_name = leave_allocations[0]
+            allocation_doc = frappe.get_doc('Leave Allocation', allocation_name)
+            allocation_days = allocation_doc.total_leaves_allocated
+            return allocation_days
+        else:
+            return 0
+    else:
+        return
+
+
+@frappe.whitelist()
+def get_total_leave_days(from_date, to_date):
+    return date_diff(to_date, from_date) + 1

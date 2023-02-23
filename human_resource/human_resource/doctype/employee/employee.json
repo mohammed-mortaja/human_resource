@@ -12,6 +12,7 @@
   "last_name",
   "full_name",
   "image",
+  "user",
   "column_break_kfjny",
   "status",
   "employee_number",
@@ -75,7 +76,7 @@
   },
   {
    "fieldname": "date_of_joining",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
    "label": "Date of Joining"
   },
   {
@@ -132,11 +133,17 @@
    "fieldname": "cv_2",
    "fieldtype": "Data",
    "label": " Cv 2"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-11 13:07:42.612950",
+ "modified": "2023-02-23 10:26:24.419555",
  "modified_by": "Administrator",
  "module": "Human Resource",
  "name": "Employee",

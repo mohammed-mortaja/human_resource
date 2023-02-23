@@ -6,6 +6,10 @@ class Attendance(Document):
 
 	# def on_submit(self):
 	# 	pass
+
+	# def on_submit(self):
+	# 	self.work_hours_()
+
 	def validate(self):
 		self.work_hours_()
 		self.late_hours_()
@@ -107,17 +111,30 @@ class Attendance(Document):
 
 
 @frappe.whitelist()
-def create_attendance(attendance_date=None,check_in=None,check_out=None):
-	user=frappe.session.user
-	employee_id=frappe.db.get_list('Employee', filters={ 'user': ['=', user] })
-	employee_id=employee_id[0].name
+def create_attendance(attendance_date, check_in, check_out):
+	employee = frappe.db.exists("Employee", {"user": frappe.session.user})
+	if not employee:
+		prepare_response(404, "faild", "User not Linked to Employee")
+		return
 
-	if attendance_date and check_in and check_out:
-		doc=frappe.new_doc('Attendance')
-		doc.employee=f"{employee_id}"
-		doc.attendance_date=frappe.utils.getdate(attendance_date)
-		doc.check_in=check_in
-		doc.check_out=check_out
-		doc.insert()
-		return doc
-	return []
+	att = frappe.new_doc("Attendance")
+	att.attendance_date = attendance_date
+	att.check_in = check_in
+	att.check_out = check_out
+	att.employee = employee
+	att.insert(ignore_permissions=True)
+	att.reload()
+	frappe.db.commit()
+	return att
+
+
+def prepare_response(status_code, _type, message, data=None):
+	if data is None:
+		data = dict()
+
+	frappe.local.response["http_status_code"] = status_code
+	frappe.local.response["api_status"] = {
+		"type": _type,
+		"message": message,
+	}
+	frappe.local.response["data"] = data

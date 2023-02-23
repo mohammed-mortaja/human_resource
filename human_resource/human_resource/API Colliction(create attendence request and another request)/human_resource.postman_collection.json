@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "97d536a7-dfb6-4d7f-9986-bddaae025368",
+		"name": "human_resource",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24541192"
+	},
+	"item": [
+		{
+			"name": "get logged user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token 9c81b87154abe9c:0e4518c49c12a36",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://0.0.0.0:8001/api/method/frappe.auth.get_logged_user?=",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"method",
+						"frappe.auth.get_logged_user"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Password Based Authentication",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"usr\": \"administrator\", \"pwd\": \"gogo\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8001/api/method/login",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"method",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all employee",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8001/api/resource/Employee",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"resource",
+						"Employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get  1 employee info",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8001/api/resource/Employee/mohammed",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"resource",
+						"Employee",
+						"mohammed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update  employee",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mobile\" : \"0595078587\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/api/resource/Employee/EMP001",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"resource",
+						"Employee",
+						"EMP001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete  employee",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"mobile\": \"0595078587\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8001/api/resource/Employee/rr",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"resource",
+						"Employee",
+						"rr"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_attendance",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
