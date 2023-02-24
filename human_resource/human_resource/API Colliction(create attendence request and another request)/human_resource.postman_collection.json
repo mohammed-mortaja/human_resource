@@ -7,6 +7,45 @@
 	},
 	"item": [
 		{
+			"name": "create_attendance",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token 8b6dcb3b87d7f63:c7a92807eaaf2fc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"attendance_date\": \"23-02-2023\",\n    \"check_in\": \"09:00\",\n    \"check_out\": \"17:00\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/api/method/human_resource.human_resource.api.create_attendance",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"method",
+						"human_resource.human_resource.api.create_attendance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "get logged user",
 			"request": {
 				"method": "GET",
@@ -196,14 +235,6 @@
 						"rr"
 					]
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "create_attendance",
-			"request": {
-				"method": "GET",
-				"header": []
 			},
 			"response": []
 		}
