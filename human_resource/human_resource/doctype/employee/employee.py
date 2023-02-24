@@ -14,11 +14,10 @@ class Employee(Document):
 		
 		# validate status and age
 		today = datetime.datetime.now().date()
-		date_of_birth_str = self.date_of_birth.strftime('%Y-%m-%d')
+		date_of_birth_str = self.date_of_birth
 		date_of_birth = datetime.datetime.strptime(date_of_birth_str, '%Y-%m-%d').date()
 		if self.status == "Active" and (today.year - date_of_birth.year) > 60:
 			frappe.throw("Cannot save Employee with status Active and age more than 60 years")
-		
 		# validate mobile
 		if not self.mobile.startswith("059") or len(self.mobile) != 10:
 			frappe.throw("Mobile must start with 059 and must be 10 digits long")
